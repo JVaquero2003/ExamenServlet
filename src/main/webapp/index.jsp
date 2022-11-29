@@ -14,7 +14,7 @@
 	<br/>
 	<a href="/listItems">Listado de Items</a>
 	<br/>
-	<a href="/comparadorRangos">Listado de Items</a>
+	<a href="/comparadorRangos">Comparador de rangos</a>
 	<br/>
 	<a href="/insertItems.jsp">Formulario de insercion de Items</a>
 	<br/>

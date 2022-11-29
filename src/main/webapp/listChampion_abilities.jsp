@@ -23,15 +23,15 @@
 		<table class="table table-striped">
 			<tr>
 				<td>Id</td>
-				<td>Nombre</td>
-				<td>Title</td>
-				<td>Lore</td>
-				<td>Tags</td>
+				<td>champion_name</td>
+				<td>description</td>
+				<td>effect</td>
+				<td>cost</td>
+				<td>rango</td>
 			</tr>
 			<c:forEach var="habilidad" items="${lista}" varStatus="indice">
 				<tr style="border: 1px solid black; padding: 5pt">
 					<td><c:out value="${habilidad.id}" /></td>
-					<td><c:out value="${campeon.champion_name}" /></td>
 					<td><c:out value="${habilidad.champion_name}" /></td>
 					<td><c:out value="${habilidad.champion_description}" /></td>
 					<td><c:out value="${habilidad.effect}" /></td>

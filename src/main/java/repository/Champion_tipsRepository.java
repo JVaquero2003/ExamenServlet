@@ -9,7 +9,9 @@ import java.util.List;
 
 import connection.AbstractConnection;
 import connection.H2Connection;
+import model.Champion_abilities;
 import model.Champion_tips;
+import model.Champions;
 
 public class Champion_tipsRepository {
 
@@ -37,6 +39,35 @@ public class Champion_tipsRepository {
 			manager.close(conn);
 		}
 
+	}
+	
+	public List<Champion_tips> listarTipsCampeon(Champions champion) {
+		List<Champion_tips> tips = new ArrayList<>();
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn
+					.prepareStatement("SELECT * FROM champion_tips where champion = ?");
+			preparedStatement.setInt(1, champion.getId());
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				Champion_tips tip = new Champion_tips();
+				tip.setId(resultSet.getInt("id"));
+				tip.setChampion(resultSet.getInt("champion"));
+				tip.setTip(resultSet.getString("tip"));
+				
+				tips.add(tip);
+			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			manager.close(preparedStatement);
+			manager.close(conn);
+		}
+		return tips;
 	}
 /*
 	public List<Champions> listAll() {
