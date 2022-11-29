@@ -77,6 +77,39 @@ public class Champion_abilitiesRepository {
 		}
 		return habilidades;
 	}
+	
+	public List<Champion_abilities> listAll(int rango_1, int rango_2) {
+        List<Champion_abilities> habilidades = new ArrayList<>();
+        Connection conn = manager.open(jdbcUrl);
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn
+                    .prepareStatement("SELECT * FROM champion_abilities WHERE rango BETWEEN ? AND ?");
+            preparedStatement.setInt(1, rango_1);
+            preparedStatement.setInt(2, rango_2);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Champion_abilities habilidad = new Champion_abilities();
+                habilidad.setId(resultSet.getInt("id"));
+                habilidad.setChampion(resultSet.getInt("champion"));
+                habilidad.setChampion_name(resultSet.getString("champion_name"));
+                habilidad.setChampion_description(resultSet.getString("champion_description"));
+                habilidad.setEffect(resultSet.getString("effect"));
+                habilidad.setCost(resultSet.getString("cost"));
+                habilidad.setRango(resultSet.getInt("rango"));
+
+                habilidades.add(habilidad);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            manager.close(preparedStatement);
+            manager.close(conn);
+        }
+        return habilidades;
+    } 
 
 /*
 	public void delete(int id) {

@@ -14,6 +14,8 @@
 	<br/>
 	<a href="/listItems">Listado de Items</a>
 	<br/>
+	<a href="/comparadorRangos">Listado de Items</a>
+	<br/>
 	<a href="/insertItems.jsp">Formulario de insercion de Items</a>
 	<br/>
 	<a href="/insertChampion.jsp">Formulario de insercion de champions</a>

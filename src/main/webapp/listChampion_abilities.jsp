@@ -14,10 +14,11 @@
 <body>
 	<br />
 	<div class="container">
-		<form action="" class="form">
-			<input class="form-control" type="text" name="rango1" /> <input
-				class="form-control" type="text" name="rango2" /> <input
-				class="btn btn" type="submit" value="Buscar" />
+		<form method="post" action="/comparadorRangos">
+			<span>Seleccionar habilidades entre una y otra</span><input
+				type="number" name="rango_1" id="rango_1"><span> y </span><input
+				type="number" name="rango_2" id="rango_2">&nbsp;<input
+				type="submit" value="enviar">
 		</form>
 		<table class="table table-striped">
 			<tr>
